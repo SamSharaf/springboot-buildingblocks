@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "user", schema = "PUBLIC")  // h2 has the default schema
@@ -12,8 +14,10 @@ public class User {
   @Id
   @GeneratedValue
   private long id;
+  @NotEmpty(message = "Username is Mandatory field. Please provide it")
   @Column(name = "user_name", length = 200, nullable = false, unique = true)
   private String username;
+  @Size(min = 2, message = "FirstName should have at least 2 characters")
   @Column(length = 200, nullable = false)
   private String firstname;
   @Column(length = 200, nullable = false)
