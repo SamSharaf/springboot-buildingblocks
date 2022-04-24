@@ -33,6 +33,12 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
     return new ResponseEntity<>(customErrorDetails, HttpStatus.NOT_FOUND);
   }
 
+  @ExceptionHandler(OrderNotFoundException.class)
+  public ResponseEntity<Object> handleOrderNotFoundException(OrderNotFoundException ex, WebRequest request) {
+    CustomErrorDetails customErrorDetails = new CustomErrorDetails(new Date(), ex.getMessage(), request.getDescription(false));
+    return new ResponseEntity<>(customErrorDetails, HttpStatus.NOT_FOUND);
+  }
+
   //ConstraintViolationException
   @ExceptionHandler(ConstraintViolationException.class)
   public ResponseEntity<Object> handleConstraintViolationException(ConstraintViolationException ex, WebRequest request){

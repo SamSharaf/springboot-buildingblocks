@@ -2,7 +2,7 @@ package com.stacksimplify.restservices.services;
 
 
 import com.stacksimplify.restservices.entities.User;
-import com.stacksimplify.restservices.entities.UserRepository;
+import com.stacksimplify.restservices.repositories.UserRepository;
 import com.stacksimplify.restservices.exceptions.UserExistsException;
 import com.stacksimplify.restservices.exceptions.UserNotFoundException;
 import java.util.List;
