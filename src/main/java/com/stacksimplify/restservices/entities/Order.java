@@ -8,10 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.springframework.hateoas.ResourceSupport;
 
 @Entity
 @Table(name = "orders")
-public class Order {
+public class Order extends ResourceSupport {
   @Id
   @GeneratedValue
   private Long orderid;

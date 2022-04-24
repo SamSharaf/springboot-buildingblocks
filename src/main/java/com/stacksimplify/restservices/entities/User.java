@@ -9,13 +9,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import org.springframework.hateoas.ResourceSupport;
 
 @Entity
 @Table(name = "user", schema = "PUBLIC")  // h2 has the default schema
-public class User {
+public class User extends ResourceSupport {
   @Id
   @GeneratedValue
-  private long id;
+  private long userid;
   @NotEmpty(message = "Username is Mandatory field. Please provide it")
   @Column(name = "user_name", length = 200, nullable = false, unique = true)
   private String username;
@@ -37,8 +38,8 @@ public class User {
   public User() {
   }
 
-  public User(final long id, final String username, final String firstname, final String lastname, final String email, final String role, final String ssn) {
-    this.id = id;
+  public User(final long userid, final String username, final String firstname, final String lastname, final String email, final String role, final String ssn) {
+    this.userid = userid;
     this.username = username;
     this.firstname = firstname;
     this.lastname = lastname;
@@ -55,12 +56,12 @@ public class User {
     this.orders = orders;
   }
 
-  public long getId() {
-    return this.id;
+  public long getUserid() {
+    return this.userid;
   }
 
-  public void setId(final long id) {
-    this.id = id;
+  public void setUserid(final long id) {
+    this.userid = id;
   }
 
   public String getUsername() {
@@ -114,7 +115,7 @@ public class User {
   @Override
   public String toString() {
     return "User{" +
-        "id=" + id +
+        "id=" + userid +
         ", username='" + username + '\'' +
         ", firstname='" + firstname + '\'' +
         ", lastname='" + lastname + '\'' +
